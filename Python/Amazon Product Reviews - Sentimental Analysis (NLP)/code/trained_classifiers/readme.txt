@@ -1,0 +1,1 @@
+The trained classifiers are stored as pickle files in this directory
