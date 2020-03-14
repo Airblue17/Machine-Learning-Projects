@@ -1,6 +1,7 @@
 library(tm)
 library(twitteR)
 library(wordcloud)
+library(webshot)
 library(RColorBrewer)
 library(qdapRegex)
 
@@ -34,10 +35,10 @@ term.doc.matrix <- TermDocumentMatrix(bernie.corupus,
 
 
 
-head(term.doc.matrix)
 
 term.doc.matrix <- as.matrix(term.doc.matrix)
 
+head(term.doc.matrix)
 
 # Getting the word counts
 
@@ -49,8 +50,10 @@ dm <- data.frame(word=names(word.freqs), freq=word.freqs)
 
 path = 'R/Machine Learning Projects/R/Twitter Word Cloud - NLP/plots/'
 
-jpeg("wordcloud.jpg")
+jpeg(paste(path, "wordcloud.jpg", sep = ""))
+
 wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+
 title("World Cloud of tweets with the word 'Bernie' in it")
 dev.off()
 
